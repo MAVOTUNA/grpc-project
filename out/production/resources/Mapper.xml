@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.SignUpDao">
+    <select id="CourseList"  resultType="vo.CourseVO">
+        SELECT * from course;
+    </select>
+
+    <select id="StudentList"  resultType="vo.StudentVO">
+        select * from student;
+    </select>
+
+    <select id="CourseNumList" resultType="string">
+        select courseNum from course;
+    </select>
+
+    <select id="StudentNumList" resultType="string">
+        select studentNum from student;
+    </select>
+
+    <insert id="AddCourse" parameterType="vo.StudentVO">
+        insert into course(courseNum, courseName, professor, studentList)
+        VALUES(#{courseNum}, #{courseName} , #{professor} , #{studentList})
+    </insert>
+
+    <insert id="AddStudent" parameterType="vo.StudentVO">
+        insert into student (studentNum, studentName, major, classList)
+        values (#{studentNum} , #{studentName} , #{major} , #{classList})
+    </insert>
+
+    <delete id="DeleteCourse" parameterType="String">
+        delete from course
+        where courseNum = #{courseNum}
+    </delete>
+
+    <delete id="DeleteStudent" parameterType="String">
+        delete from student
+        where studentNum = #{studentNum}
+    </delete>
+
+
+</mapper>

@@ -1,0 +1,56 @@
+
+syntax = "proto3";
+
+service SignUpService {
+
+  rpc getAllStudents(getAllStudRequest) returns (getAllStudResponse) {}
+  rpc getAllCourses(getAllCourseRequest) returns (getAllCourseResponse) {}
+
+}
+
+message  getAllStudRequest {
+  string studentNum = 1;
+  string studentName = 2;
+  string major = 3;
+  string classList = 4;
+  int32 identifier = 5;
+}
+
+message getAllCourseRequest{
+
+  string courseNum = 1;
+  string professor = 2;
+  string courseName = 3;
+  string studentList = 4;
+  int32 identifier = 5;
+
+}
+
+message getAllStudResponse {
+  repeated Student student = 1;
+  repeated string studentNum =3;
+  string classList = 4;
+  int32 check = 2;
+}
+
+message getAllCourseResponse{
+  repeated Course course = 1;
+  repeated string courseNum =3;
+  string studentList = 4;
+  int32 check = 2;
+}
+
+message Student {
+  string studentNum =1;
+  string studentName =2;
+  string major =3 ;
+  string classList =4;
+}
+
+message Course {
+  string courseNum =1;
+  string professor =2;
+  string courseName =3 ;
+  string studentList =4;
+}
+
